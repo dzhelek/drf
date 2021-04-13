@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-9tlw*@zj@bc4!idifmq)om5ybj#2u%%ta@8+pkj!6*gpie&b)!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'kokoshkite.pythonanywhere.com']
 
 
 # Application definition
@@ -77,8 +77,19 @@ WSGI_APPLICATION = 'webserver.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'kokoshkite$default',
+        'USER': 'kokoshkite',
+        'PASSWORD': 'jelekpash12345',
+        'HOST': 'kokoshkite.mysql.pythonanywhere-services.com',
+        'TIME_ZONE': 'Europe/Sofia',
+        'TEST': {
+            'NAME': 'kokoshkite$test_default',
+        },
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            "charset": "utf8mb4",
+        },
     }
 }
 
@@ -125,3 +136,11 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+'''
+try:
+    from local_settings import *
+except ImportError:
+    pass
+    '''
+from .local_settings import *

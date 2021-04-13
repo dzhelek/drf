@@ -12,7 +12,7 @@ class SensorsValueSerializer(serializers.ModelSerializer):
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Notification
-        fields = '__all__'
+        fields = 'has_not_water', 'has_not_food', 'is_heater_on', 'is_motor_on'
 
 
 class MotorSettingSerializer(serializers.ModelSerializer):

@@ -10,8 +10,10 @@ class SensorsValueView(generics.RetrieveUpdateAPIView):
     serializer_class = serializers.SensorsValueSerializer
 
 
-class NotificationView(viewsets.ModelViewSet):
+class NotificationView(generics.RetrieveUpdateAPIView):
     queryset = models.Notification.objects.all()
+    if not models.Notification.objects.count():
+        models.Notification.objects.create()
     serializer_class = serializers.NotificationSerializer
 
 

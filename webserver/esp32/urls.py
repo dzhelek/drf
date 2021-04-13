@@ -5,11 +5,11 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register('sensors', views.SensorsValueView)
 router.register('notification', views.NotificationView)
 router.register('settings/motor', views.MotorSettingView)
 router.register('settings/timing', views.TimingSettingView)
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('sensors', views.SensorsValueView.as_view(), {"pk": 1}),
 ]

@@ -1,10 +1,12 @@
-from rest_framework import viewsets
+from rest_framework import generics, viewsets
 
 from . import models, serializers
 
 
-class SensorsValueView(viewsets.ModelViewSet):
+class SensorsValueView(generics.RetrieveUpdateAPIView):
     queryset = models.SensorsValue.objects.all()
+    if not models.SensorsValue.objects.count():
+        models.SensorsValue.objects.create()
     serializer_class = serializers.SensorsValueSerializer
 
 

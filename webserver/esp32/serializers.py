@@ -6,7 +6,7 @@ from . import models
 class SensorsValueSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.SensorsValue
-        fields = '__all__'
+        fields = 'water_level', 'temperature'
 
 
 class NotificationSerializer(serializers.ModelSerializer):
